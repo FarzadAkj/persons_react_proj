@@ -3,13 +3,26 @@ import Person from './Person/Person';
 import './App.css'
 
 class App extends Component {
-  state = {
-    persons: [
-      { id: 1, name: "Farzad", age: "20" },
-      { id: '2', name: "Ehsan", age: "24" },
-      { id: '343refsf', name: "Mehdi", age: "30" },
-    ],
-    showPersons: false,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      persons: [
+        { id: 1, name: "Farzad", age: "20" },
+        { id: '2', name: "Ehsan", age: "24" },
+        { id: '343refsf', name: "Mehdi", age: "30" },
+      ],
+      showPersons: false,
+    }
+    console.log('App.js inside constructor');
+  }
+
+  componentWillMount() {
+    console.log('App.js inside componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('App.js inside componentDidMount');
   }
 
   toggleNameHandler = () => {
@@ -53,6 +66,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('App.js inside render');
     let persons = [];
 
     if (this.state.showPersons) {
