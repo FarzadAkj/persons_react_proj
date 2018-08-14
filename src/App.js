@@ -10,13 +10,13 @@ class App extends Component {
     ],
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     console.log('clicked');
 
     // this.state.persons[0].name = "Farbod"; !! DO NOT CHANGE THE STATE THIS WAY!!!
     const persons = this.state.persons;
 
-    persons[0].name = "Farbod";
+    persons[0].name = newName;
 
     this.setState({
       persons,
@@ -30,11 +30,18 @@ class App extends Component {
 
         <p>This is really working!!</p>
 
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button onClick={() => this.switchNameHandler("Farbod")}>Switch Name</button>
 
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My hobbies: Playing music</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <Person
+          click={this.switchNameHandler.bind(this, "Farzad!!")}
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}>My hobbies: Playing music</Person>
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age} />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
       </div>
     );
 
