@@ -25,6 +25,21 @@ class App extends Component {
     console.log('App.js inside componentDidMount');
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('App.js inside componentWillReceiveProps', nextProps);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('App.js inside shouldComponentUpdate', nextProps, nextState);
+    // return this.state.showPersons == false;
+
+    return nextState.persons !== this.state.persons || this.state.showPersons === false || nextState.showPersons !== this.state.showPersons;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App.js inside componentDidUpdate', prevProps, prevState);
+  }
+
   toggleNameHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons,
